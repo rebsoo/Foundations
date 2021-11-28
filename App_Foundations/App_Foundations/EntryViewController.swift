@@ -10,6 +10,9 @@
 import UIKit
 
 class EntryViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var secondView: UIView!
 
     @IBOutlet var field: UITextField!
     //@IBOutlet var descriptionField: UITextField!
@@ -28,6 +31,18 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         saveTask()
         
         return true
+    }
+    
+    @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            firstView.alpha = 1
+            secondView.alpha = 0
+        }
+        else if sender.selectedSegmentIndex == 1 {
+            
+            firstView.alpha = 0
+            secondView.alpha = 1
+        }
     }
 
     @objc func saveTask(){
